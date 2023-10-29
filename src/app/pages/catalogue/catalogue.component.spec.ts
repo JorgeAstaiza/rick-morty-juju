@@ -87,7 +87,7 @@ describe('CatalogueComponent', () => {
     expect(component.characters).toEqual(initialCharacters);
   });
 
-  it('should filter the characters by specie', () => {
+  test('should filter the characters by specie', () => {
     const initialCharacters = [
       { species: 'Human' },
       { species: 'Alien' },
@@ -106,7 +106,7 @@ describe('CatalogueComponent', () => {
     ]);
   });
 
-  it('should show all characters when filterSpecie is "all"', () => {
+  test('should show all characters when filterSpecie is "all"', () => {
     const initialCharacters = [
       { species: 'Human' },
       { species: 'Alien' },

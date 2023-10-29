@@ -20,10 +20,10 @@ describe('CatalogueService', () => {
   });
 
   afterEach(() => {
-    // Verifica que no haya solicitudes HTTP pendientes después de cada prueba
     httpMock.verify();
   });
-  it('should be created', () => {
+
+  test('should be created', () => {
     expect(service).toBeTruthy();
   });
 
@@ -33,12 +33,11 @@ describe('CatalogueService', () => {
       expect(pokemon).toEqual(catalogueMock);
       done();
     });
-    // Captura la solicitud HTTP (GET)
+
     const req = httpMock.expectOne(
       `https://rickandmortyapi.com/api/character?page=${page}`
     );
 
-    // Simula una respuesta exitosa
     req.flush(catalogueMock);
   });
 });
