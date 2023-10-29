@@ -1,0 +1,83 @@
+<div>
+  <h1>Rick and Morty App</h1>
+  <div class="filter-container">
+    <p>Filter:</p>
+    <input
+      type="text"
+      name=""
+      id=""
+      placeholder="Nombre"
+      [formControl]="filterName"
+      (keyup)="filterByName()"
+    />
+    <select [formControl]="filterSpecie" (change)="filterBySpecie()">
+      <option value="all">All</option>
+      <option *ngFor="let specie of speciesList" [value]="specie">
+        {{ specie }}
+      </option>
+    </select>
+    <button (click)="cleanFilter()">Clean filters</button>
+  </div>
+  <div class="container">
+    <div class="card" *ngFor="let item of characters">
+      <div class="card-container">
+        <img src="{{ item.image }}" alt="{{ item.name }}" />
+        <p>{{ item.name }}</p>
+        <p>{{ item.species }}</p>
+        <button class="btn-details" (click)="characterDetails(item)">
+          See Details
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="btn-pagination-container">
+    <button
+      *ngIf="pageNumber > 1"
+      class="btn-details"
+      (click)="getCharacters(false)"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="icon icon-tabler icon-tabler-arrow-big-left-filled"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+        stroke="currentColor"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <path
+          d="M9.586 4l-6.586 6.586a2 2 0 0 0 0 2.828l6.586 6.586a2 2 0 0 0 2.18 .434l.145 -.068a2 2 0 0 0 1.089 -1.78v-2.586h7a2 2 0 0 0 2 -2v-4l-.005 -.15a2 2 0 0 0 -1.995 -1.85l-7 -.001v-2.585a2 2 0 0 0 -3.414 -1.414z"
+          stroke-width="0"
+          fill="currentColor"
+        ></path>
+      </svg>
+      Previous page
+    </button>
+    <button class="btn-details" (click)="getCharacters(true)">
+      Next page
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="icon icon-tabler icon-tabler-arrow-big-right-filled"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+        stroke="currentColor"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <path
+          d="M12.089 3.634a2 2 0 0 0 -1.089 1.78l-.001 2.586h-6.999a2 2 0 0 0 -2 2v4l.005 .15a2 2 0 0 0 1.995 1.85l6.999 -.001l.001 2.587a2 2 0 0 0 3.414 1.414l6.586 -6.586a2 2 0 0 0 0 -2.828l-6.586 -6.586a2 2 0 0 0 -2.18 -.434l-.145 .068z"
+          stroke-width="0"
+          fill="currentColor"
+        ></path>
+      </svg>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="page-container">
+  <div class="details-container" *ngIf="details; else noCharacter">
+    <a [routerLink]="['']">Volver</a>
+    <img src="{{ details.image }}" alt="" srcset="" />
+    <p><strong>Name:</strong> {{ details.name }}</p>
+    <p><strong>Gender:</strong> {{ details.gender }}</p>
+    <p><strong>Specie:</strong> {{ details.species }}</p>
+    <p><strong>Status:</strong> {{ details.status }}</p>
+    <p><strong>Location:</strong> {{ details.location?.name }}</p>
+  </div>
+
+  <ng-template #noCharacter>
+    <div class="">
+      <p class="text-white">Select an character to see the details</p>
+      <a [routerLink]="['']" class="text-blue-500">Characters List</a>
+    </div>
+  </ng-template>
+</div>
